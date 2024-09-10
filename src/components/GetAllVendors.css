@@ -1,0 +1,121 @@
+body {
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+}
+
+.transactions-list-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.transactions-list-container h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.transactions-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.transaction-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.transaction-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.transaction-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.edit-button, .delete-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
+
+.loading-circle {
+    display: block;
+    margin: 0 auto;
+}
+
+.styled-back-button {
+    width: 50%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    background-color: #007BFF;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto 0;
+    display: block;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.styled-back-button:hover {
+    background-color: #0056b3;
+}
+
+.btn-mobile {
+    margin-top: 12%;
+}
+
+.btn-desktop {
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .transaction-item {
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    .transaction-actions {
+        justify-content: center;
+    }
+
+    .edit-button, .delete-button {
+        padding: 8px;
+        font-size: 12px;
+    }
+}

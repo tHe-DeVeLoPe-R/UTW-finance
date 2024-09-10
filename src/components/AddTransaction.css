@@ -1,0 +1,104 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: url(../images/bg.jpg);
+    /* background-color: #f9f9f9; */
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 93%;
+    max-width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Hide number input spin box in WebKit browsers */
+    margin: 0;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(8, 167, 140, 0.781);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: rgba(8, 167, 140, 0.9);
+}
+
+.styled-back-button {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mobile{
+    margin-top: 12%;
+}
+
+.btn-desktop{
+    margin-top: 30px;
+}
+
+.loading-circle{
+    
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    position: relative;
+}

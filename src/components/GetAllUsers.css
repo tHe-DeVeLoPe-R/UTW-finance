@@ -1,0 +1,104 @@
+body{
+    background-image: url(../images/bg.jpg);
+}
+.transactions-list-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+   
+}
+
+.transactions-list-container h2 {
+    text-align: center;
+}
+
+.transactions-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.transaction-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.transaction-info p {
+    margin: 5px 0;
+}
+
+.transaction-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.edit-button, .delete-button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
+
+@media (max-width: 600px) {
+    .transaction-item {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .transaction-actions {
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+}
+
+.styled-back-button {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mobile{
+    margin-top: 12%;
+}
+
+.btn-desktop{
+    margin-top: 30px;
+}

@@ -1,0 +1,119 @@
+/* Center the entire page content */
+body {
+    background-image: url('../images/bg.jpg');
+   
+   margin: 0;
+   padding: 0;
+}
+
+/* Style the form container */
+.update-form-container {
+
+    width: 90%;
+   margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    /* Center horizontally */
+}
+
+/* Style the heading */
+.update-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 90%;
+    /* Make input fields full width of the form */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Style the submit button */
+button {
+    width: 90%;
+    /* Make button full width of the form */
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    background-color: rgba(8, 167, 140, 0.781);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgba(8, 167, 140, 0.781);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .update-form-container {
+        padding: 15px;
+    }
+
+    .update-form-container h2 {
+        font-size: 18px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+.styled-back-button {
+    width: 50%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto 0;
+    display: block;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.styled-back-button:hover {
+    background-color: #0056b3;
+}
+
+.btn-mobile {
+    margin-top: 12%;
+}
+
+.btn-desktop {
+    margin-top: 30px;
+}
+
+.loading-circle{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+   
+    position: relative;
+}

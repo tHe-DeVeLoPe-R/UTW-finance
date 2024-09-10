@@ -1,0 +1,85 @@
+.dashboard {
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(../images/bg.jpg);
+    /* Allow for layered content */
+
+}
+
+.headimage {
+    width: 100%;
+
+}
+
+.dashboard-heading {
+    margin-top: 10%;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.styled-transaction-button {
+    margin-top: 20%;
+    width: 60%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(8, 167, 140, 0.781);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Center the button horizontally */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.styled-find-button {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mobile{
+    margin-top: 12%;
+}
+
+.btn-desktop{
+    margin-top: 30px;
+}
+.logout-button{
+    margin-top: 20%;
+    width: 40%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Center the button horizontally */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
