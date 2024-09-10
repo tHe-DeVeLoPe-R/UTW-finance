@@ -18,6 +18,7 @@ export default function Dashboard() {
      <button onClick={()=>{navigate('/update-transactions')}} className={`styled-find-button ${isMobile?'btn-mobile':'btn-desktop'}`}>List all clients</button>
      <button onClick={()=>{navigate('/update-vendors')}} className={`styled-find-button ${isMobile?'btn-mobile':'btn-desktop'}`}>List all vendors</button>
      <button onClick={()=>{navigate('/')}} className={`logout-button ${isMobile?'btn-mobile':'btn-desktop'}`}>Logout</button>
+     <br />
     </div>
   )
 }
