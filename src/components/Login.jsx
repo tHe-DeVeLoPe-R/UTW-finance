@@ -24,7 +24,7 @@ export default function Login() {
             const q = query(
                 collection(db, 'users'),
                 
-                where('pin', '==', password) // Ensure this matches your data structure
+                where('pin', '==', password.trim()) // Ensure this matches your data structure
             );
             const querySnapshot = await getDocs(q);
             setLoading(false);
