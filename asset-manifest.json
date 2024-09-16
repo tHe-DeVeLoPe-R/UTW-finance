@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/UTW-finance/static/css/main.bb11cd03.css",
+    "main.css": "/UTW-finance/static/css/main.6ecc9079.css",
     "main.js": "/UTW-finance/static/js/main.b9710f63.js",
     "static/js/453.69670095.chunk.js": "/UTW-finance/static/js/453.69670095.chunk.js",
-    "static/media/bg.jpg": "/UTW-finance/static/media/bg.54cec07b196abe1e2924.jpg",
+    "static/media/bg.jpg": "/UTW-finance/static/media/bg.a41d3fd8b47708070c4e.jpg",
     "static/media/plane.jpeg": "/UTW-finance/static/media/plane.5cdda9ae46b62208ac9e.jpeg",
     "index.html": "/UTW-finance/index.html",
-    "main.bb11cd03.css.map": "/UTW-finance/static/css/main.bb11cd03.css.map",
+    "main.6ecc9079.css.map": "/UTW-finance/static/css/main.6ecc9079.css.map",
     "main.b9710f63.js.map": "/UTW-finance/static/js/main.b9710f63.js.map",
     "453.69670095.chunk.js.map": "/UTW-finance/static/js/453.69670095.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb11cd03.css",
+    "static/css/main.6ecc9079.css",
     "static/js/main.b9710f63.js"
   ]
 }
