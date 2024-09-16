@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './AddVendor.css'
 import { useMediaQuery } from 'react-responsive'
 import { useNavigate } from 'react-router-dom';
@@ -18,13 +18,20 @@ export default function AddVendor() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-     
+
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            navigate('/', { replace: true });
+        }
+    }, [navigate]);
+
     const addClientTransaction = async (e) => {
         setLoading(true);
         e.preventDefault();
         const clientData = {
             comments,
-            date: new Date(date), // Date in the correct format
+            date: formatDate(date), // Date in the correct format
             left: Number(total - paid),
             nickname: nickname.toLowerCase().trim(),
             paid: Number(paid), // Convert to a number
@@ -39,7 +46,7 @@ export default function AddVendor() {
                 setLoading(false);
                 setError('This vendor is already in the list.');
             } else {
-                
+
                 // Add a document with the ID as 'nickname' to the 'transactions' collection
                 await setDoc(doc(db, 'vendors', nickname), clientData);
                 setLoading(false);
@@ -53,10 +60,20 @@ export default function AddVendor() {
 
     }
 
+    const formatDate = (date) => {
+        if (!(date instanceof Date)) {
+            date = new Date(date); // Convert if not already a Date object
+        }
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const dd = String(date.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+    };
+
     return (
 
         <div className="form-container">
-            <ToastContainer/>
+            <ToastContainer />
             <h2>Vendor Data Entry Form</h2>
             <form onSubmit={addClientTransaction}>
                 <div className="form-group">
@@ -111,18 +128,18 @@ export default function AddVendor() {
                     </div>
 
                     <div className="form-group">
-                    <label htmlFor="comments">Comments:</label>
-                    <input
-                        type="text"
-                        id="comments"
-                        value={comments}
-                        onChange={(e) => setComments(e.target.value)}
-                        placeholder="Enter your comment"
-                        required
-                    />
+                        <label htmlFor="comments">Comments:</label>
+                        <input
+                            type="text"
+                            id="comments"
+                            value={comments}
+                            onChange={(e) => setComments(e.target.value)}
+                            placeholder="Enter your comment"
+                            required
+                        />
                     </div>
 
-                    
+
                 </div>
                 <button type="submit" className="submit-button">Add vendor</button> <br />
                 {loading ? <img className='loading-circle' src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHZqdjExdXVxaWV0cmFjNGpwcTBuZjgwbDFuNHg2YnFjemlpZTU1biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PUYgk3wpNk0WA/giphy.gif" alt="loading" /> : ''}
@@ -131,7 +148,7 @@ export default function AddVendor() {
             </form>
             <br /> <br />
             <button onClick={() => {
-                navigate('/dashboard')
+                navigate('/dashboard', {replace: true})
             }} className={`styled-back-button ${isMobile ? 'btn-mobile' : 'btn-desktop'}`}>Back</button>
         </div>
     )

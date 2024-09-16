@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
 import db from '../config'; // Assuming Firebase db is configured
@@ -14,6 +14,13 @@ export default function UpdateVendor() {
     const location = useLocation(); // Get the vendor data passed via navigate
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          navigate('/', { replace: true });
+        }
+      }, [navigate]);
+
     const [vendorData, setVendorData] = useState(location.state.vendor); // Pre-fill with vendor data
     const [loading, setLoading] = useState(false);
 
@@ -26,14 +33,14 @@ export default function UpdateVendor() {
     };
 
     const handleUpdate = async () => {
-        const vendorDocRef = doc(db, 'vendors', location.state.vendor.nickname);
+        const vendorDocRef = doc(db, 'vendors', location.state.vendor.id);
         setLoading(true);
 
         try {
             await updateDoc(vendorDocRef, vendorData);
             toast.success('Vendor updated successfully!');
             setLoading(false);
-            navigate('/update-vendors'); // Redirect after success
+            navigate('/update-vendors', {replace: true}); // Redirect after success
         } catch (error) {
             setLoading(false);
             toast.error('Error updating vendor');
@@ -115,7 +122,7 @@ export default function UpdateVendor() {
                 /> : ''}
             </form>
             <button onClick={() => {
-                navigate('/update-vendors')
+                navigate('/update-vendors', {replace: true})
             }} className={`styled-back-button ${isMobile ? 'btn-mobile' : 'btn-desktop'}`}>Back</button>
         </div>
     );

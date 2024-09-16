@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
 import db from '../config'; // Assuming Firebase db is configured
@@ -12,6 +12,12 @@ export default function UpdateUser() {
 
     const location = useLocation(); // Get the transaction data passed via navigate
     const navigate = useNavigate();
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          navigate('/', { replace: true });
+        }
+      }, [navigate]);
 
     const [transactionData, setTransactionData] = useState(location.state.transaction); // Pre-fill with transction data
     const [loading, setLoading] = useState(false);
@@ -25,14 +31,14 @@ export default function UpdateUser() {
     };
 
     const handleUpdate = async () => {
-        const transactionDocRef = doc(db, 'transactions', location.state.transaction.nickname);
+        const transactionDocRef = doc(db, 'transactions', location.state.transaction.id);
         setLoading(true);
 
         try {
             await updateDoc(transactionDocRef, transactionData);
             toast.success('transaction updated successfully!');
             setLoading(false);
-            navigate('/update-transactions'); // Redirect after success
+            navigate('/update-transactions', {replace: true}); // Redirect after success
         } catch (error) {
             setLoading(false);
             toast.error('Error updating transaction');
@@ -114,7 +120,7 @@ export default function UpdateUser() {
                 /> : ''}
             </form>
             <button onClick={() => {
-                navigate('/update-transactions')
+                navigate('/update-transactions', {replace: true})
             }} className={`styled-back-button ${isMobile ? 'btn-mobile' : 'btn-desktop'}`}>Back</button>
         </div>
     );

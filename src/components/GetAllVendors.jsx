@@ -15,6 +15,13 @@ export default function GetAllVendors() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          navigate('/', { replace: true });
+        }
+      }, [navigate]);
+      
+    useEffect(() => {
         const fetchVendors = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, 'vendors'));
@@ -44,10 +51,19 @@ export default function GetAllVendors() {
     };
 
     const handleVendorEdit = (id, vendor) => {
-        const formattedId = id.replace(/\s+/g, ''); // Remove all spaces
-        navigate(`/update-vendors/${formattedId}`, { state: { vendor } });
+       
+        navigate(`/update-vendors/${id}`, { state: { vendor } }, {replace: true});
     };
     
+    const formatDate = (date) => {
+        if (!(date instanceof Date)) {
+            date = new Date(date); // Convert if not already a Date object
+        }
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const dd = String(date.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+    };
 
     return (
         <div className={`transactions-list-container ${isMobile ? 'mobile' : 'desktop'}`}>
@@ -70,12 +86,12 @@ export default function GetAllVendors() {
                                 <p><strong>Total:</strong> {vendor.total}</p>
                                 <p><strong>Paid:</strong> {vendor.paid}</p>
                                 <p><strong>Left:</strong> {vendor.left}</p>
-                                <p><strong>Date:</strong> {vendor.date}</p>
+                                <p><strong>Date:</strong> {formatDate(vendor.date)}</p>
                                 <p><strong>Comments:</strong> {vendor.comments}</p>
                             </div>
                             <div className="transaction-actions">
-                                <button className="edit-button" onClick={() => handleVendorEdit(vendor.nickname, vendor)}>Edit</button>
-                                <button className="delete-button" onClick={() => handleDelete(vendor.nickname)}>Delete</button>
+                                <button className="edit-button" onClick={() => handleVendorEdit(vendor.id, vendor)}>Edit</button>
+                                <button className="delete-button" onClick={() => handleDelete(vendor.id)}>Delete</button>
                             </div>
                         </li>
                     ))}
@@ -84,7 +100,7 @@ export default function GetAllVendors() {
             <br />
             <button
                 onClick={() => {
-                    navigate('/dashboard');
+                    navigate('/dashboard', {replace: true});
                 }}
                 className={`styled-back-button ${isMobile ? 'btn-mobile' : 'btn-desktop'}`}
             >

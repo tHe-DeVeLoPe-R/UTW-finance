@@ -15,6 +15,13 @@ export default function GetAllUsers() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          navigate('/', { replace: true });
+        }
+      }, [navigate]);
+      
+    useEffect(() => {
         const fetchTransactions = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, 'transactions'));
@@ -44,8 +51,8 @@ export default function GetAllUsers() {
     };
 
     const handleEdit = (id, transaction) => {
-        const formattedId = id.replace(/\s+/g, ''); // Remove all spaces
-        navigate(`/update-users/${formattedId}`, { state: { transaction } });
+       
+        navigate(`/update-users/${id}`, { state: { transaction } }, {replace: true});
     };
     const formatDate = (date) => {
         if (!(date instanceof Date)) {
@@ -78,8 +85,8 @@ export default function GetAllUsers() {
                                 <p><strong>Comments:</strong> {transaction.comments}</p>
                             </div>
                             <div className="transaction-actions">
-                                <button className="edit-button" onClick={() => handleEdit(transaction.nickname, transaction)}>Edit</button>
-                                <button className="delete-button" onClick={() => handleDelete(transaction.nickname)}>Delete</button>
+                                <button className="edit-button" onClick={() => handleEdit(transaction.id, transaction)}>Edit</button>
+                                <button className="delete-button" onClick={() => handleDelete(transaction.id)}>Delete</button>
                             </div>
                         </li>
                     ))}
@@ -87,7 +94,7 @@ export default function GetAllUsers() {
             )}
             <br />
             <button onClick={() => {
-                navigate('/dashboard')
+                navigate('/dashboard', {replace: true})
             }} className={`styled-back-button ${isMobile ? 'btn-mobile' : 'btn-desktop'}`}>Back</button>
         </div>
     );

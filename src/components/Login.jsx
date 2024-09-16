@@ -30,7 +30,8 @@ export default function Login() {
             setLoading(false);
 
             if (!querySnapshot.empty) {
-                navigate('/dashboard')
+                navigate('/dashboard', {replace: true}, { state: { isLoggedIn } })
+                localStorage.setItem('authToken', 'UTW-786929');
                 setIsLoggedIn(true);
                 setError('');
             } else {

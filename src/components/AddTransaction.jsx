@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './AddTransaction.css'
 import { useMediaQuery } from 'react-responsive'
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,13 @@ export default function AddTransaction() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-     
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            navigate('/', { replace: true });
+        }
+    }, [navigate]);
+
     const addClientTransaction = async (e) => {
         setLoading(true);
         e.preventDefault();
@@ -139,7 +145,7 @@ export default function AddTransaction() {
             </form>
             <br /> <br />
             <button onClick={() => {
-                navigate('/dashboard')
+                navigate('/dashboard', {replace: true})
             }} className={`styled-back-button ${isMobile ? 'btn-mobile' : 'btn-desktop'}`}>Back</button>
         </div>
     )
