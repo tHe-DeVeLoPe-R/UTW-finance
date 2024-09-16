@@ -49,8 +49,8 @@
     font-weight: bold;
     font-size: 18px;
     color: white;
-    background-color: transparent;
-    border: 2px solid white;
+    background-color: rgba(8, 167, 140, 0.781);
+    border: none;
     border-radius: 8px;
 
     cursor: pointer;
